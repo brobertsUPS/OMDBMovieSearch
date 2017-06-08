@@ -19,48 +19,7 @@ import { fetchMovie } from '../actions/movieActions';
 
 import { MonoText } from '../components/StyledText';
 import Colors from '../constants/Colors';
-
 import Movie from '../components/Movie';
-const rogueOne = {
-  "Title": "Rogue One",
-  "Year": "2016",
-  "Rated": "PG-13",
-  "Released": "16 Dec 2016",
-  "Runtime": "133 min",
-  "Genre": "Action, Adventure, Sci-Fi",
-  "Director": "Gareth Edwards",
-  "Writer": "Chris Weitz (screenplay), Tony Gilroy (screenplay), John Knoll (story by), Gary Whitta (story by), George Lucas (based on characters created by)",
-  "Actors": "Felicity Jones, Diego Luna, Alan Tudyk, Donnie Yen",
-  "Plot": "The Rebel Alliance makes a risky move to steal the plans for the Death Star, setting up the epic saga to follow.",
-  "Language": "English",
-  "Country": "USA",
-  "Awards": "Nominated for 2 Oscars. Another 11 wins & 67 nominations.",
-  "Poster": "https:\/\/images-na.ssl-images-amazon.com\/images\/M\/MV5BMjEwMzMxODIzOV5BMl5BanBnXkFtZTgwNzg3OTAzMDI@._V1_SX300.jpg",
-  "Ratings": [
-    {
-      "Source": "Internet Movie Database",
-      "Value": "7.9\/10"
-    },
-    {
-      "Source": "Rotten Tomatoes",
-      "Value": "85%"
-    },
-    {
-      "Source": "Metacritic",
-      "Value": "65\/100"
-    }
-  ],
-  "Metascore": "65",
-  "imdbRating": "7.9",
-  "imdbVotes": "315,407",
-  "imdbID": "tt3748528",
-  "Type": "movie",
-  "DVD": "04 Apr 2017",
-  "BoxOffice": "$532,171,696",
-  "Production": "Walt Disney Pictures",
-  "Website": "http:\/\/www.starwars.com\/",
-  "Response": "True"
-};
 
 class HomeScreen extends React.Component {
   static route = {
@@ -82,7 +41,7 @@ class HomeScreen extends React.Component {
     const { movieFetchError, loading, moviesByID, allMovieIDs } = this.props;
     let selectedMovie = {};
     // currently selected move is the last one in the list of ids
-    if (allMovieIDs.length > 0) selectedMovie = moviesByID[allMovieIDs[allMovieIDs.length - 1]];
+    if (allMovieIDs.size > 0) selectedMovie = moviesByID.get(allMovieIDs.last());
 
     const movieFetchErrorAlert = this.props.movieFetchError === '' ? null : (
       <View style={styles.movieFetchErrorContainer}>

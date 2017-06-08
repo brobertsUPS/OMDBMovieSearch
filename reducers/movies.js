@@ -1,10 +1,13 @@
+import { List, Map } from 'immutable';
+
 import { FETCH_MOVIE, MOVIE_RECEIVED, MOVIE_FETCH_FAILED } from '../actions/actionTypes';
+
 // TODO: ImmutableJS will make this much simpler and easier to extend
 export const movies = (state = {
   loading: false,
   movieFetchError: '',
-  byID: {},
-  allIDs: []
+  byID: Map(),
+  allIDs: List()
 }, action) => {
   switch (action.type) {
     case FETCH_MOVIE:
@@ -14,16 +17,12 @@ export const movies = (state = {
         movieFetchError: ''
       };
     case MOVIE_RECEIVED:
-      const byIDCopy = Object.assign({}, state.byID);
-      byIDCopy[action.payload.imdbID] = action.payload;
-      const allIDsCopy = state.allIDs.slice(0);
-      allIDsCopy.push(action.payload.imdbID);
       return {
         ...state,
         loading: false,
         movieFetchError: '',
-        byID: byIDCopy,
-        allIDs: allIDsCopy
+        byID: state.byID.set(action.payload.imdbID, action.payload),
+        allIDs: state.allIDs.push(action.payload.imdbID)
       };
     case MOVIE_FETCH_FAILED:
       return {
