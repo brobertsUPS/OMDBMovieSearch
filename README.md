@@ -2,5 +2,5 @@
 
 This mobile app was built in a day with react-native, redux, redux-sagas, and expo! I use the very awesome OMDB API to query for movies: [OMDB API](https://www.omdbapi.com/).
 
-I plan on writing a blog post soon on what I learned building mobile apps without android studio or xcode. In the meantime, there is a live demo for v1 of the app on my personal site under the ReactJS tab [here](https://brobertsups.github.io).
+I wrote a blog post on my experience [here](https://medium.com/@brobertstech/a-mobile-app-in-a-day-no-xcode-or-android-studio-2feb8d306d80). Feel free to email me at brobertstech@gmail.com if you have comments or questions about my work.
 
